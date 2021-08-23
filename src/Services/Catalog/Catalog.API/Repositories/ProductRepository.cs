@@ -25,7 +25,7 @@ namespace Catalog.API.Repositories
             return await _context.Products.Find(p => true).ToListAsync();
         }
 
-        public async Task<Product> GetProducts(string id)
+        public async Task<Product> GetProduct(string id)
         {
             return await _context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
