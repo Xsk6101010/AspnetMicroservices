@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catalog.API.Entities;
 
 namespace Catalog.API.Repositories
 {
+    /// DesignPattern.Repository
     /// <summary>
     /// represent RepositoryPattern.
     /// </summary>

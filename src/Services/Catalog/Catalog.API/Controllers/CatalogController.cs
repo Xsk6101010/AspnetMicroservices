@@ -30,7 +30,7 @@ namespace Catalog.API.Controllers
             var product = await _repository.GetProducts();
             return Ok(product);
         }
-        [HttpGet()]
+
         [HttpGet("id:length(24)",Name = "GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
@@ -44,6 +44,7 @@ namespace Catalog.API.Controllers
             }
             return Ok(product);
         }
+
         [Route("[action]/{category}",Name = "GetProductByCategory")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>),(int)HttpStatusCode.OK)]

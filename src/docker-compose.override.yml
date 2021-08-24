@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  catalog.api:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+      #- "DatabaseSettings:ConnectionString=mongodb://localhost:27017" // localhost->container_name
+    depends_on:
+      - catalogdb
+    ports:
+      #- "8000:80" // error: Cannot start service catalog.api: Ports are not available: 
+                            #listen tcp 0.0.0.0:8000: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+      - "8001:80"
