@@ -30,6 +30,7 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> Update([FromBody] ShoppingCart basket)
         {
+
             return Ok(await _repository.Update(basket));
         }
 
