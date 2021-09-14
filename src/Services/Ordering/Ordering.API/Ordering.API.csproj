@@ -13,4 +13,10 @@
     <ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\Accessibility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
