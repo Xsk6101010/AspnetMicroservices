@@ -9,12 +9,6 @@ namespace Ordering.API
 {
     public class Startup
     {
-        //public Startup(IServiceProvider serviceProvider)
-        //{
-        //    ServiceProvider = serviceProvider;
-        //}
-        //public IServiceProvider ServiceProvider { get; }
-
         public Startup(IConfiguration serviceProvider)
         {
             Configuration = serviceProvider;
