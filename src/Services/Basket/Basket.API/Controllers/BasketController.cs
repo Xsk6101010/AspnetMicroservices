@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
 using Basket.API.Entities;
 using Basket.API.GrpcServices;
 using Basket.API.Repositories;
+using EventBus.Messages.Events;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.API.Controllers
@@ -14,10 +16,13 @@ namespace Basket.API.Controllers
     {
         private readonly IBasketRepository _repository;
         private readonly DiscountGrpcService _discountGrpcService;
-        public BasketController(IBasketRepository repository, DiscountGrpcService discountGrpcService)
+        private readonly IMapper _mapper;
+
+        public BasketController(IBasketRepository repository, DiscountGrpcService discountGrpcService, IMapper mapper)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            _discountGrpcService = discountGrpcService ?? throw new ArgumentNullException(nameof(discountGrpcService));
+            _repository = repository;
+            _discountGrpcService = discountGrpcService;
+            _mapper = mapper;
         }
 
         [HttpGet("{name}", Name = "GetBasket")]
@@ -51,6 +56,26 @@ namespace Basket.API.Controllers
         {
             await _repository.Delete(userName);
             return Ok();
+        }
+
+        [Route("Action")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Checkout([FromBody] BasketCheckout basketCheckout)
+        {
+            // get existing basket with total price.
+            var basket = await _repository.Get(basketCheckout.UserName);
+            if (basket == null) return BadRequest();
+
+            // send checkout event to rabbitmq.
+            var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
+
+            // _eventBus.PublishBasketCheckout.
+
+            // remove the basket.
+            await _repository.Delete(basket.UserName);
+            return Accepted();
         }
     }
 }
