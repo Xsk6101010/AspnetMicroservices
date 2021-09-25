@@ -27,5 +27,5 @@ namespace Ordering.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    }
+        }
 }
