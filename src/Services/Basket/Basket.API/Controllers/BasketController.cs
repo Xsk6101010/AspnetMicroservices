@@ -60,7 +60,7 @@ namespace Basket.API.Controllers
             return Ok();
         }
 
-        [Route("Action")]
+        [Route("[Action]")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
