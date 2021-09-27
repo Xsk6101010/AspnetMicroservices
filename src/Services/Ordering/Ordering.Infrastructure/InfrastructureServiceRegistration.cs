@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Contracts.Infrastructure;
@@ -20,6 +21,11 @@ namespace Ordering.Infrastructure
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailService, EmailService>();
+            return services;
+        }
+
+        public static IServiceCollection AddInfrastructureServices_UT(this IServiceCollection services, Action<int> configuration = null)
+        {
             return services;
         }
     }

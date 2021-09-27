@@ -1,3 +1,4 @@
+using System;
 using EventBus.Messages.Common;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +28,7 @@ namespace Ordering.API
             services.AddApplicationServices();
             services.AddInfrastructureServices(Configuration);
 
-            // MassTransit-RabbitMQ Configuration
+            // MassTransit-RabbitMQ Configuration.
             services.AddMassTransit(config =>
             {
                 config.AddConsumer<BasketCheckoutConsumer>();
@@ -44,7 +45,7 @@ namespace Ordering.API
 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<BasketCheckoutConsumer>();
-            // General Configuration
+            // General Configuration.
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
