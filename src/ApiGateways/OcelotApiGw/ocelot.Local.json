@@ -1,0 +1,107 @@
+{
+  "Routes": [
+    //Catalog API
+    {
+      "DownStreamPathTemplate": "/api/v1/Catalog",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/",
+      "UpStreamHttpMethod": [ "GET", "PORT", "PUT" ]
+    },
+    {
+      "DownStreamPathTemplate": "/api/v1/Catalog/{id}",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/{id}",
+      "UpStreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownStreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/GetProductByCategory/{category}",
+      "UpStreamHttpMethod": [ "GET" ]
+    },
+    //Basket API
+    {
+      "DownStreamPathTemplate": "/api/v1/Basket/{userName}",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/{userName}",
+      "UpStreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownStreamPathTemplate": "/api/v1/Basket",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket",
+      "UpStreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownStreamPathTemplate": "/api/v1/Basket/Checkout",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/Checkout",
+      "UpStreamHttpMethod": [ "POST" ]
+    },
+
+    //Discount API
+    {
+      "DownStreamPathTemplate": "/api/v1/Discount/{productName}",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8003"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount/{productName}",
+      "UpStreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownStreamPathTemplate": "/api/v1/Discount",
+      "DownStreamScheme": "http",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Ports": "8003"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount",
+      "UpStreamHttpMethod": [ "PUT", "POST" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5010" 
+  }
+}
