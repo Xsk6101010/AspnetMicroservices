@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /src/CodeMap1.4.dgml
+/src/ApiGateways/OcelotApiGw/ocelot.Local01.json

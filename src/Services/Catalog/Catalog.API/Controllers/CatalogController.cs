@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace Catalog.API.Controllers
 {
     [ApiController]
-    [Route("api/vi/[controller]")]
+    [Route("api/v1/[controller]")]
     public class CatalogController : ControllerBase
     {
         //just one instance.
@@ -31,7 +31,7 @@ namespace Catalog.API.Controllers
             return Ok(product);
         }
 
-        [HttpGet("id:length(24)",Name = "GetProduct")]
+        [HttpGet("{id:length(24)}",Name = "GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> GetProductById(string id)

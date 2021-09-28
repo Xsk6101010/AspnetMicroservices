@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="ocelot.Local.json" />
+    <Content Remove="ocelot.Local01.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="ocelot.Local.json" />
+    <None Include="ocelot.Local01.json" />
   </ItemGroup>
 
   <ItemGroup>
