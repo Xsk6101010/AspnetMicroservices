@@ -5,15 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="ocelot.Local01.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="ocelot.Local01.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Ocelot" Version="17.0.0" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="17.0.0" />
   </ItemGroup>
 
 </Project>
